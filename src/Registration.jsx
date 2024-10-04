@@ -5,12 +5,33 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
+import Alert from "react-bootstrap/Alert";
 
-function Registration() {
+function RegistrationForm() {
   const [registrationType, setRegistrationType] = useState("student");
+  const [showPopup, setShowPopup] = useState(false);
+  const [name, setName] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleRegistrationTypeChange = (e) => {
     setRegistrationType(e.target.value);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Show the popup
+    setIsSubmitted(true);
+    setShowPopup(true);
+
+    // Hide the popup after 4 seconds
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 4000);
   };
 
   return (
@@ -22,11 +43,15 @@ function Registration() {
       </header>
 
       <div className="container my-5 d-flex justify-content-center">
-        <Form id="registration-form">
+        <Form id="registration-form" onSubmit={handleSubmit}>
           <Row className="mb-3">
             <Col sm={12} md={6} className="mb-3 mb-md-0">
               <Form.Label>First Name</Form.Label>
-              <Form.Control placeholder="First name" />
+              <Form.Control
+                placeholder="First name"
+                value={name}
+                onChange={handleNameChange}
+              />
             </Col>
             <Col sm={12} md={6}>
               <Form.Label>Last Name</Form.Label>
@@ -37,9 +62,9 @@ function Registration() {
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
-            {/* <Form.Text className="text-muted">
+            <Form.Text className="text-muted">
               We'll never share your email with anyone else.
-            </Form.Text> */}
+            </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3">
@@ -115,8 +140,15 @@ function Registration() {
           </Button>
         </Form>
       </div>
+
+      {/* Popup message after successful registration */}
+      {showPopup && (
+        <Alert variant="success" className="popup-message">
+          <strong>{name}</strong>, thanks for declaring interest in our program!
+        </Alert>
+      )}
     </div>
   );
 }
 
-export default Registration;
+export default RegistrationForm;
