@@ -40,7 +40,7 @@ function Home() {
         style={{ backgroundColor: "#29166F" }}
       >
         <div className="container d-flex flex-column align-items-center">
-          <h1 className="text-center fw-semibold">U-INSPIRE Award</h1>
+          <h1 className="text-center fw-semibold">Unilorin-INSPIRE Award</h1>
           <h2 className="text-center">
             University of Ilorin INnovative Skills and PIoneering
             Entrepreneurship Award
@@ -73,7 +73,7 @@ function Home() {
       <div className="py-5">
         <div className="container">
           <h2 className="text-center mb-5">
-            Why Participate in the U-INSPIRE Award?
+            Why Participate in the Unilorin-INSPIRE Award?
           </h2>
           <div className="row">
             <div className="col-md-4 mb-3">
@@ -105,11 +105,13 @@ function Home() {
         <div className="container">
           <div className="row d-flex align-items-center justify-content-around">
             <div className="col-lg-5">
-              <h2 className="text-capitalize">U-INSPIRE Award Components</h2>
+              <h2 className="text-capitalize">
+                Unilorin-INSPIRE Award Components
+              </h2>
               <p>
-                The U-INSPIRE Award is structured around three core pillars that
-                foster a well-rounded student experience. Complete these
-                components to earn your award before graduation.
+                The Unilorin-INSPIRE Award is structured around three core
+                pillars that foster a well-rounded student experience. Complete
+                these components to earn your award before graduation.
               </p>
               <Link href="#ProgramDetails">
                 <button
@@ -143,7 +145,7 @@ function Home() {
                 The Technical and Entrepreneurship Centre (TEC)
               </Accordion.Header>
               <Accordion.Body>
-                The U-INSPIRE Award is managed by the Technical and
+                The Unilorin-INSPIRE Award is managed by the Technical and
                 Entrepreneurship Centre (TEC), a sub-unit dedicated to
                 supporting students throughout their journey in the program. TEC
                 works closely with trainers to guide participants and ensure
@@ -166,8 +168,8 @@ function Home() {
                   </li>
                   <li>
                     Certificates will be awarded for completed modules, and the
-                    full U-INSPIRE Award will be granted upon satisfying all
-                    program requirements before graduation.
+                    full Unilorin-INSPIRE Award will be granted upon satisfying
+                    all program requirements before graduation.
                   </li>
                 </ul>
               </Accordion.Body>
@@ -175,7 +177,7 @@ function Home() {
             <Accordion.Item eventKey="2">
               <Accordion.Header>Flexibility and Enrollment</Accordion.Header>
               <Accordion.Body>
-                The U-INSPIRE Award is available to all undergraduate and
+                The Unilorin-INSPIRE Award is available to all undergraduate and
                 postgraduate students at the University of Ilorin. Enrollment is
                 flexible, and students can join the program at any stage in
                 their academic journey. However, the award must be completed
@@ -189,7 +191,7 @@ function Home() {
                 prepare a wrap up experience write-up detailing key activities,
                 reflection on personal development, and connection to future
                 goals. Only accredited activities and trainings will be counted
-                towards the U-INSPIRE Award.
+                towards the Unilorin-INSPIRE Award.
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="4">
@@ -210,7 +212,7 @@ function Home() {
               </Accordion.Header>
               <Accordion.Body>
                 We are seeking industry endowments for participants who
-                distinguish themselves through the U-INSPIRE Award. These
+                distinguish themselves through the Unilorin-INSPIRE Award. These
                 endowments will serve as prizes to recognize top achievers,
                 encouraging students to fully engage with the program and
                 develop skills that will drive their future success.
@@ -219,11 +221,12 @@ function Home() {
             <Accordion.Item eventKey="6">
               <Accordion.Header>For Postgraduate Students</Accordion.Header>
               <Accordion.Body>
-                The U-INSPIRE Award is tailored to accommodate postgraduate
-                students as well. In addition to university activities,
-                postgraduate students can include recent professional
-                experiences, volunteer work, or community roles from the past
-                three years to demonstrate their growth and development.
+                The Unilorin-INSPIRE Award is tailored to accommodate
+                postgraduate students as well. In addition to university
+                activities, postgraduate students can include recent
+                professional experiences, volunteer work, or community roles
+                from the past three years to demonstrate their growth and
+                development.
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -260,15 +263,15 @@ function Home() {
       <div className="py-5">
         <div className="container">
           <h2 className="text-center mb-5">
-            How the U-INSPIRE Award Helps You Stand Out
+            How the Unilorin-INSPIRE Award Helps You Stand Out
           </h2>
           <p className="text-center">
             In today's competitive job market, a degree alone may not be enough.
             Employers seek candidates with initiative, creativity, and
-            leadership skills. The U-INSPIRE Award distinguishes participants by
-            formally recognizing their involvement in activities that contribute
-            to holistic development, showcasing their readiness for real-world
-            challenges.
+            leadership skills. The Unilorin-INSPIRE Award distinguishes
+            participants by formally recognizing their involvement in activities
+            that contribute to holistic development, showcasing their readiness
+            for real-world challenges.
           </p>
         </div>
       </div>

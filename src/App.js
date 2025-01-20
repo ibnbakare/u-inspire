@@ -1,34 +1,48 @@
 import "./App.css";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Home from "./pages/Home/Home";
-// import Courses from "./pages/Courses/Courses";
-// import About from "./pages/About/About";
-// import Blog from "./pages/Blog/Blog";
+
 import Contact from "./pages/Contact/Contact";
 import ulearn from "./utils/images/U-inspire.png";
 import Registration from "./Registration";
+import { Dashboard } from "./Dashboard";
+import Login from "./Login";
+import AdminDashboard from "./AdminDashboard";
+import { PatnerDashboard } from "./PatnerDashboard";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import { MySkill } from "./components/skills/MySkill";
+import { DefineCourses } from "./components/partner/DefineCourses";
+import { CommunicationLinks } from "./components/partner/CommunicationLinks";
+import { ViewCommunicationLinks } from "./components/student/ViewCommunicationLinks";
+import { ViewCourses } from "./components/student/ViewCourses";
 
-function App() {
+// Protected Route Component
+function ProtectedRoute({ children }) {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+  return <>{children}</>;
+}
+
+// Layout wrapper component
+function MainLayout({ children }) {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/registration");
+  };
+
   return (
-    <div>
+    <>
       <Navbar expand="lg" className="position-absolute w-100">
         <Container>
           <Navbar.Brand>
             <Link to="/" className="navbar-brand d-flex align-items-center">
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                fill="#dc3545"
-                class="bi bi-backpack-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="M5 13v-3h4v.5a.5.5 0 0 0 1 0V10h1v3z" />
-                <path d="M6 2v.341C3.67 3.165 2 5.388 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8a6.002 6.002 0 0 0-4-5.659V2a2 2 0 1 0-4 0m2-1a1 1 0 0 1 1 1v.083a6.04 6.04 0 0 0-2 0V2a1 1 0 0 1 1-1m0 3a4 4 0 0 1 3.96 3.43.5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14A4 4 0 0 1 8 4M4.5 9h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5" />
-              </svg> */}
               <img
                 src={ulearn}
                 alt="ulearn"
@@ -36,9 +50,9 @@ function App() {
               />
               <span className="mx-2 text-light lh-1 fw-semibold">
                 UNILORIN
-                <br></br>
+                <br />
                 INSPIRE
-                <br></br>
+                <br />
                 AWARD
               </span>
             </Link>
@@ -55,28 +69,21 @@ function App() {
               <Nav.Link href="#ProgramDetails" className="text-uppercase">
                 Program Details
               </Nav.Link>
-              {/* <Nav.Link href="/about" className="text-uppercase">
-                About us
-              </Nav.Link> */}
               <Nav.Link href="#faq" className="text-uppercase">
                 FAQ
               </Nav.Link>
               <Nav.Link href="/contact" className="text-uppercase">
                 Get in touch
               </Nav.Link>
+              <Button onClick={handleLogin} className="text-uppercase">
+                Enroll/Login
+              </Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/courses" element={<Courses />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} /> */}
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/registration" element={<Registration />} />
-      </Routes>
+      {children}
 
       <footer>
         <div className="container my-5">
@@ -201,6 +208,118 @@ function App() {
           </div>
         </div>
       </footer>
+    </>
+  );
+}
+
+function App() {
+  const location = useLocation();
+  const isDashboard = location.pathname === "/dashboard";
+
+  return (
+    <div>
+      <Routes>
+        {/* Routes with MainLayout */}
+        <Route
+          path="/"
+          element={
+            <MainLayout>
+              <Home />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <MainLayout>
+              <Contact />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/registration"
+          element={
+            <MainLayout>
+              <Login />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <MainLayout>
+              <Login />
+            </MainLayout>
+          }
+        />
+
+        {/* Dashboard route without MainLayout */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/patner"
+          element={
+            <ProtectedRoute>
+              <PatnerDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/partner/define-courses"
+          element={
+            <ProtectedRoute>
+              <DefineCourses />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/partner/communication-links"
+          element={
+            <ProtectedRoute>
+              <CommunicationLinks />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/communication-links"
+          element={
+            <ProtectedRoute>
+              <ViewCommunicationLinks />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/courses"
+          element={
+            <ProtectedRoute>
+              <ViewCourses />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/skills"
+          element={
+            <ProtectedRoute>
+              <MySkill />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </div>
   );
 }
